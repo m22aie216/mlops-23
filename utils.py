@@ -4,6 +4,8 @@ from sklearn import svm, datasets, metrics
 
 
 
+
+
 def read_digits():
     digits = datasets.load_digits()
     X = digits.images

@@ -3,10 +3,13 @@
 Recognizing hand-written digits
 ================================
 
+
+
 This example shows how scikit-learn can be used to recognize images of
 hand-written digits, from 0-9.
 
 """
+ 
 
 # Author: Gael Varoquaux <gael dot varoquaux at normalesup dot org>
 # License: BSD 3 clause
