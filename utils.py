@@ -32,8 +32,6 @@ def tune_hparams(X_train, y_train, X_dev, y_dev, h_params_combinations):
 
 
 
-
-
 def read_digits():
     digits = datasets.load_digits()
     X = digits.images
