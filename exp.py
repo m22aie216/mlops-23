@@ -30,6 +30,7 @@ h_params_combinations = get_hyperparameter_combinations(h_params)
 
 test_sizes =  [0.1, 0.2, 0.3, 0.45]
 dev_sizes  =  [0.1, 0.2, 0.3, 0.45]
+image_size="4x4"
 for test_size in test_sizes:
     for dev_size in dev_sizes:
         train_size = 1- test_size - dev_size
@@ -46,5 +47,5 @@ for test_size in test_sizes:
         test_acc = predict_and_eval(best_model, X_test, y_test)
         train_acc = predict_and_eval(best_model, X_train, y_train)
         dev_acc = best_accuracy
-
-        print(" test_size={:.2f} dev_size={:.2f} train_size={:.2f} train_acc={:.2f} dev_acc={:.2f} test_acc={:.2f}".format(test_size, dev_size, train_size, train_acc, dev_acc, test_acc))
+	
+        print(" image_size={:} test_size={:.2f} dev_size={:.2f} train_size={:.2f} train_acc={:.2f} dev_acc={:.2f} test_acc={:.2f}".format(image_size, test_size, dev_size, train_size, train_acc, dev_acc, test_acc))
