@@ -21,4 +21,4 @@ jobs:
       - name: Install dep
         run:  pip3 install --no-cache-dir -r requirements.txt
       - name: Run experiment
-        run: python exp.py
+        run: python exp.py --runs 4 --test_sizes 0.2,0.3 --dev_sizes 0.2 --models svm,tree
