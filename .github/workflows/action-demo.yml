@@ -24,4 +24,4 @@ jobs:
         run: python3 exp.py --runs 4 --test_sizes 0.2,0.3 --dev_sizes 0.2 --models svm,tree
       - name: Run test cases
         run: python3 -m pytest
-      - run: echo "This statment is added to echo as part of quiz question 1"
+      - run: echo "This statment is added to echo as part of quiz question 1 "
