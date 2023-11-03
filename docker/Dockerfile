@@ -1,12 +1,10 @@
-# FROM ubuntu:23.10
+#FROM ubuntu:23.10
 FROM python:3.9.17
-# copy the whole code directory
 COPY . /digits/
-# RUN apt-get update
-# RUN apt-get install -y python3 python3-pip
-RUN pip3 install -r /digits/requirements.txt
-# need python
-# no need for conda or venv
+#RUN apt-get update
+#RUN apt-get install -y python3
+#RUN apt-get install -y python3-pip
+RUN pip install --no-cache-dir -r /exp/requirements.txt
+RUN mkdir /digits/models
 WORKDIR /digits
-# requirements installation
-CMD ["pytest"]
+CMD ["python","./digits/exp.py --runs 4 --test_sizes 0.2,0.3 --dev_sizes 0.2 --models svm,tree"]
