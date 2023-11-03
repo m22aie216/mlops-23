@@ -23,4 +23,4 @@ jobs:
       - name: Run Pytest
         run: pytest
       - name: Run experiment
-        run: python exp.py
+        run: python exp.py --runs 4 --test_sizes 0.2,0.3 --dev_sizes 0.2 --models svm,tree
