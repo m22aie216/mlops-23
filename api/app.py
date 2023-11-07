@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/hello/<name>')
 def index(name):
-    return "Hello, "+name+"!"
+    return "Hello World, "+name+"!"
 
 @app.route('/model', methods=['POST'])
 def pred_model():
