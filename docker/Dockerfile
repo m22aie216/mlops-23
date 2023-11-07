@@ -5,6 +5,10 @@ COPY . /digits/
 #RUN apt-get install -y python3
 #RUN apt-get install -y python3-pip
 RUN pip install --no-cache-dir -r /digits/requirements.txt
-CMD ["mkdir", "/digits/models"]
+VOLUME ["/digits"]
+ENV FLASK_APP api/app.py
+CMD ["python","flash","run","--host=0.0.0.0"
+#docker run -it -p 5000:5000 digits/v1 bash
+#CMD ["mkdir", "/digits/models"]
 WORKDIR /digits
-CMD ["python","/digits/exp.py --runs 4 --test_sizes 0.2,0.3 --dev_sizes 0.2 --models svm,tree"]
+#CMD ["python","/digits/exp.py --runs 4 --test_sizes 0.2,0.3 --dev_sizes 0.2 --models svm,tree"]
