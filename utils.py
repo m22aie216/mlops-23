@@ -2,10 +2,12 @@
 # Import datasets, classifiers and performance metrics
 from sklearn import svm,datasets
 from sklearn.model_selection import train_test_split
+
 from sklearn import tree
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from joblib import dump,load
+
 
 #read gigits
 def read_digits():
@@ -13,6 +15,14 @@ def read_digits():
     x = digits.images
     y = digits.target 
     return x,y
+
+def scale_image(images,dimension):
+    #resize all images
+    n_samples = len(images)
+    images = images.reshape((n_samples, -1))
+    images = resize(images,(n_samples,dimension,dimension))
+    return images
+
 
 # We will define utils here :
 def preprocess_data(data):
@@ -32,20 +42,25 @@ def split_data(X,y,test_size=0.5,random_state=1):
 def train_model(X, y, model_params,model_type = 'svm'):
     if model_type == 'svm':
         clf = svm.SVC(**model_params)
+
     if model_type == 'tree':
         clf = tree.DecisionTreeClassifier(**model_params)
+
     clf.fit(X, y)
     return clf
 
 def split_train_dev_test(X, y, test_size, dev_size):
+
     X_train_dev, X_test, y_train_dev, y_test = split_data(X, y, test_size=test_size)
     X_train, X_dev, y_train, y_dev = split_data(X_train_dev, y_train_dev, test_size=dev_size/(1-test_size))
+
     return X_train, X_test,X_dev, y_train, y_test, y_dev
 
 def predict_and_eval(model, X, y):
     
     predicted = model.predict(X)
     accuracy = accuracy_score(y, predicted)
+
 
     return accuracy,predicted
 
@@ -78,3 +93,4 @@ def tune_hparams(X_train, Y_train, X_dev, y_dev, list_of_all_param_combination, 
     dump(best_model,best_model_path)
     #best_model_path = 
     return best_hparams, best_model_path, best_accuracy_so_far
+
