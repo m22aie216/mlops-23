@@ -20,8 +20,9 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Install dep
         run:  pip3 install --no-cache-dir -r requirements.txt
-      - name: Run code
-        run: python3 exp.py --runs 4 --test_sizes 0.2,0.3 --dev_sizes 0.2 --models svm,tree
-      - name: Run test cases
-        run: python3 -m pytest
-      - run: echo "This statment is added to echo as part of quiz question 1 "
+
+      - name: Run Pytest
+        run: pytest
+      - name: Run experiment
+        run: python exp.py --runs 4 --test_sizes 0.3 --dev_sizes 0.2 --prod tree --candidate svm
+
