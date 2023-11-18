@@ -22,7 +22,7 @@ def pred_model():
     print(num)
     #Assuming this is the path of our best trained model
     dirname = os.path.dirname(__file__)
-    filename = os.path.join(dirname, '../models/svm_gamma:0.001_C:0.1.joblib')
+    filename = os.path.join(dirname, './svm_gamma:0.001_C:0.1.model')
     model = load(filename)
     pred1 = model.predict(num)
     #reurn pred1 in json
