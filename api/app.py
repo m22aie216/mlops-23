@@ -5,6 +5,10 @@ import numpy as np
 import re
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return "Hello, World"
+
 @app.route('/hello/<name>')
 def index(name):
     return "Hello, "+name+"!"
