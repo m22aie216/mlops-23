@@ -1,4 +1,4 @@
-FROM exp:latest
+FROM base:latest
 
 WORKDIR /digits
 ENV FLASK_APP=api/app
