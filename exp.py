@@ -28,6 +28,8 @@ parser.add_argument("--test_sizes", help="comma sprated value of test sizes")
 parser.add_argument("--dev_sizes", help="comma sprated value of dev sizes")
 parser.add_argument("--prod", help="model to be used for production")
 parser.add_argument("--candidate", help="model to be used as candidate")
+parser.add_argument("--models", help="model to be used for production")
+
 
 args=parser.parse_args()
 
@@ -90,4 +92,3 @@ for i in range(max_runs):
                 print(f"Confusion matrix:\n{disp.confusion_matrix}")
                 #results.append([{'model':model,'run_index': i, 'test_size':test_size, 'dev_size':dev_size,'train_size': 1- (dev_size+test_size), 'train_acc':accuracy_train,'dev_acc':accuracy_dev,'test_acc':accuracy_test}])
         #print(f"best_gamma={best_hparams['gamma']},best_C={best_hparams['C']}")
-
