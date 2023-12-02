@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score
 from joblib import dump,load
 from sklearn import preprocessing
 
+
 #read gigits
 def read_digits():
     digits = datasets.load_digits()
