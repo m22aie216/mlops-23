@@ -28,6 +28,8 @@ parser.add_argument("--test_sizes", help="comma sprated value of test sizes")
 parser.add_argument("--dev_sizes", help="comma sprated value of dev sizes")
 parser.add_argument("--prod", help="model to be used for production")
 parser.add_argument("--candidate", help="model to be used as candidate")
+parser.add_argument("--models", help="model to be used for production")
+
 
 args=parser.parse_args()
 
