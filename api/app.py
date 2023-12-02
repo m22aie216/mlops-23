@@ -16,9 +16,19 @@ def hello_world_post():
 def pred_model():
     js = request.get_json()
     image1 = [js['image']]
+    model = js['model']
     #Assuming this is the path of our best trained model
     dirname = os.path.dirname(__file__)
-    filename = os.path.join(dirname, '../models/treemax_depth:100.joblib')
+    if model == 'tree':	
+    	filename = os.path.join(dirname, '../models/treemax_depth:100.joblib')
+    elif model == 'svm':
+    	filename = os.path.join(dirname, '../models/svmgamma:0.001_C:2.joblib')
+
+    elif modle == 'lr':
+    	filename = os.path.join(dirname, '../models/m22aie216_lr_lbfgs.joblib')
+    else:
+    	filename = os.path.join(dirname, '../models/m22aie216_lr_liblinear.joblib')
+
     model = load(filename)
     pred1 = model.predict(image1)
     #reurn pred1 in json
