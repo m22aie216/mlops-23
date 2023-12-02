@@ -7,6 +7,7 @@ from sklearn import tree
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from joblib import dump,load
+from sklearn import preprocessing
 
 
 #read gigits
@@ -28,6 +29,7 @@ def scale_image(images,dimension):
 def preprocess_data(data):
     n_samples = len(data)
     data = data.reshape((n_samples, -1))
+    data = preprocessing.normalize(data, norm='l2')
     return data
 
 # Split data into 50% train and 50% test subsets
