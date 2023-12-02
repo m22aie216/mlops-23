@@ -1,30 +1,26 @@
 from flask import Flask, request, jsonify
 from joblib import load
 import os
-import numpy as np
-import re
+
 app = Flask(__name__)
 
-@app.route('/hello/<name>')
-def index(name):
-    return "Hello, "+name+"!"
+@app.route('/')
+def index():
+    return "Hello, World"
+
+@app.route("/", methods=["POST"])
+def hello_world_post():    
+    return {"op" : "Hello, World POST " + request.json["suffix"]}
 
 @app.route('/predict', methods=['POST'])
 def pred_model():
     js = request.get_json()
-    tt = js['image']
-    jj = re.split('\,', tt)
-    numbers = np.array(jj,dtype='i') 
-    print("------------")
-    print(type(numbers))
-    print(numbers)
-    num = numbers.reshape(1,-1)
-    print(num)
+    image1 = [js['image']]
     #Assuming this is the path of our best trained model
     dirname = os.path.dirname(__file__)
-    filename = os.path.join(dirname, './svm_gamma:0.001_C:0.1.model')
+    filename = os.path.join(dirname, '../models/treemax_depth:100.joblib')
     model = load(filename)
-    pred1 = model.predict(num)
+    pred1 = model.predict(image1)
     #reurn pred1 in json
     return jsonify(prediction=pred1.tolist())
     
